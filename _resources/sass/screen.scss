@@ -1,0 +1,56 @@
+//	******************************************************************
+//	Compass Framework
+//	******************************************************************
+	
+@import
+	"compass/reset",
+	"compass/utilities",
+	"compass/css3";
+
+
+//	******************************************************************
+//	Global Variables
+//	******************************************************************
+	
+// Vertical Rhythm
+$base-font-size: 18px;
+
+// Typefaces
+$font-family: "myriad-pro", "Myriad Pro", sans-serif;
+
+// Text Colors
+$text-color: #4d3739;
+
+// Colors
+$red: #b50305;
+
+// Grid
+$gutter: 20px;
+
+// Easing
+$ease-out-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$ease-in-out-expo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+$ease-out-quad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+$ease-in-quad: cubic-bezier(0.550, 0.085, 0.680, 0.530);
+$ease-in-out-quad: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+
+
+//	******************************************************************
+//	Base Styles
+//	******************************************************************
+
+@import
+	"tools";
+
+
+body {
+	font-family: $font-family;
+	color: $text-color;
+
+	@include font-smooth(antialiased);
+
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+
+	font-weight: 400;
+}
