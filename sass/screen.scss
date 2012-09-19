@@ -25,7 +25,7 @@ $text-color: #4d3739;
 $red: #b50305;
 
 // Grid
-$gutter: 20px;
+$gutter: 10px;
 
 // Easing
 $ease-out-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
@@ -46,11 +46,32 @@ $ease-in-out-quad: cubic-bezier(0.455, 0.030, 0.515, 0.955);
 body {
 	font-family: $font-family;
 	color: $text-color;
-
+	background: #fff;
 	@include font-smooth(antialiased);
 
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
 
 	font-weight: 400;
+	padding: $gutter $gutter 0 $gutter;
+}
+
+nav {
+
+	li {
+		padding-bottom: $gutter;
+	}
+	a {
+		display: block;
+		line-height: 30px;
+		width: 100px;
+		text-align: center;
+
+		&[data-active="off"]  {
+			background: red;
+		}
+		&[data-active="on"]  {
+			background: blue;
+		}
+	}
 }

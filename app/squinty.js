@@ -8,10 +8,30 @@ if (localStorage.persist) {
     // Global filters object
     var filters = [];
     var css_filters = "";
+    var page_css = '';
+
+    var presets = {
+        blur: {
+            filter: 'blur(4px)'
+        },
+        grayscale: {
+            filter: 'grayscale(100%)'
+        },
+        invert: {
+            filter: 'invert(1)'
+        },
+        distance: {
+            zoom: '80%'
+        }
+    };
+
+    var distance = true;
 
 
     // If DOM Loaded
     document.addEventListener('DOMContentLoaded', function () {
+
+        //console.log(presets.blur.filter);
 
         // Find all buttons
         var buttons = document.querySelectorAll('a');
@@ -19,13 +39,18 @@ if (localStorage.persist) {
         // for each button
         for (var i = 0; i < buttons.length; i++) {
 
+            //console.log(localStorage);
+
             // add onclick event listener
             buttons[i].addEventListener('click', function(e) {
 
                 chrome.tabs.insertCSS(
                     null,
-                    {code:'html {-webkit-filter: none;}'}
+                    {code:'html {-webkit-filter: none; zoom: none;}'}
                 );
+
+                css_filters = '';
+                distance = false;
 
                 // get command key
                 var target = e.target;
@@ -42,6 +67,9 @@ if (localStorage.persist) {
 
                     // set active flag
                     target.dataset.active = 'on';
+
+                    // set local storage
+                    //localStorage["var"]=data;
                 }
 
                 // else if on already
@@ -58,14 +86,37 @@ if (localStorage.persist) {
 
 
                 // apply CSS changes based on filters
-                console.log(filters.join(" "));
+                //console.log(filters.join(" "));
 
                 // loop filters building
+                for (var i = 0; i < filters.length; i++) {
+
+                    //console.log(filters[i]);
+                    //var object_name = eval(filters[i]);
+                    if (presets[filters[i]].filter) {
+                        css_filters += presets[filters[i]].filter + " ";
+                    }
+                    // zoom
+                    else if (filters[i] == 'distance') {
+                        distance = true;
+                    }
+                };
+
+
+                // have filters set
+                if (css_filters.length) {
+                    page_css = '-webkit-filter: ' + css_filters + ';';
+                }
+                if (distance) {
+                    page_css += ' zoom: 60%;';
+                }
+                //console.log(css_filters);
+
 
                 
                 chrome.tabs.insertCSS(
                     null,
-                    {code:'html {-webkit-filter: ' + filters.join(" ") + ';}'}
+                    {code:'html {' + page_css + '}'}
                 );
 
 
