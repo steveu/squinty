@@ -42,6 +42,11 @@ $ease-in-out-quad: cubic-bezier(0.455, 0.030, 0.515, 0.955);
 @import
 	"tools";
 
+html {
+	@include transition-property(transform);
+	@include transition-duration(0.2s);
+	@include transition-timing-function($ease-in-out-quad);
+}
 
 body {
 	font-family: $font-family;
@@ -64,7 +69,7 @@ nav {
 	a {
 		display: block;
 		line-height: 30px;
-		width: 100px;
+		width: 90px;
 		text-align: center;
 
 		&[data-active="off"]  {
