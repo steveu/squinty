@@ -7,6 +7,12 @@
 	"compass/utilities",
 	"compass/css3";
 
+$legacy-support-for-ie: false;
+$legacy-support-for-ie8: false;
+$experimental-support-for-mozilla: false;
+$experimental-support-for-opera: false;
+$experimental-support-for-microsoft: false;
+$experimental-support-for-khtml: false;
 
 //	******************************************************************
 //	Global Variables
