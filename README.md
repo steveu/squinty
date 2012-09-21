@@ -8,7 +8,7 @@ Chrome extension that helps you get a different look at websites you are designi
 * Blur the page
 * Greyscale mode
 * Invert colours
-* View upside down
+* Flip upside down
 * Zoom out
 
 ## Installation
