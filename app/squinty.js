@@ -1,10 +1,10 @@
-
-//localStorage.blur = 'on';
-//localStorage.grayscale = 'on';
+/*
+    Squinty
+*/
 
 var sq_presets = {
     blur: {
-        filter: 'blur(2px)'
+        filter: 'blur(3px)'
     },
     grayscale: {
         filter: 'grayscale(100%)'
@@ -89,17 +89,23 @@ function buildCSS(active_filters)
 // If DOM Loaded
 document.addEventListener('DOMContentLoaded', function () {
 
+    chrome.tabs.insertCSS(
+        null,
+        {code:'html {-webkit-transition-property: all; -webkit-transition-duration: 0.15s, 0.15s; -webkit-transition-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955); }'}
+    );
+
+    // Apply any soted filters
     var sq_active = activeFilters();
 
     var sq_filters_css = buildCSS(sq_active);
 
     chrome.tabs.insertCSS(
         null,
-        {code:'html {' + sq_filters_css + ' -webkit-transition-property: all; -webkit-transition-duration: 0.15s, 0.15s; -webkit-transition-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955); }'}
+        {code:'html {' + sq_filters_css + ' }'}
     );
 
     // Find all buttons
-    var buttons = document.querySelectorAll('a');
+    var buttons = document.getElementById('presets').querySelectorAll('a');
 
     for (var i = 0; i < buttons.length; i++) {
 
@@ -117,25 +123,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
             var active = localStorage[command];
 
-            if (active == 'on') {
-                localStorage[command] = 'off';
-                target.dataset.active = 'off';
-            }
-            else {
-                localStorage[command] = 'on';
-                target.dataset.active = 'on';
-            }
+            // set local storage
+            localStorage[command] = (active == 'on') ? 'off' : 'on';
 
+            // create and apply filters
             sq_active = activeFilters();
 
             sq_filters_css = buildCSS(sq_active);
 
             chrome.tabs.insertCSS(
                 null,
-                {code:'html {' + sq_filters_css + ' -webkit-transition-property: all; -webkit-transition-duration: 0.15s, 0.15s; -webkit-transition-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955); }'}
+                {code:'html {' + sq_filters_css + ' }'}
             );
+
+            // active button state
+            target.dataset.active = (active == 'on') ? 'off' : 'on';
 
         });
     }
+
+    // credits link
+    document.getElementById('credits').addEventListener('click', function(e) {
+        chrome.tabs.update({url: 'http://urm.st/projects/squinty'}); 
+    });
 
 });
