@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // credits link
     document.getElementById('credits').addEventListener('click', function(e) {
-        chrome.tabs.update({url: 'http://urm.st/projects/squinty'}); 
+        chrome.tabs.update({url: 'http://urm.st/'}); 
     });
 
 });
