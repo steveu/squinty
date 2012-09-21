@@ -1,4 +1,10 @@
-squinty
+Squinty
 =======
 
-Chrome extension to get a different look at website design
+Chrome extension that helps you get a different look at websites you are designing.
+
+* Blur the page
+* Greyscale mode
+* Invert colours
+* View upside down
+* Zoom out
