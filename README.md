@@ -15,8 +15,12 @@ Chrome extension that helps you get a different look at websites you are designi
 
 *Chrome -> Extensions -> Load Unpacked Extension -> /chrome/*
 
-In Chrome Webstore very soon.
+(In Chrome Webstore very soon)
 
 ## Author
 
-Steve Urmston - http:urm.st
+Steve Urmston - (http:urm.st)[http:urm.st]
+
+## Licence
+
+(Attribution 3.0 Unported (CC BY 3.0))[http://creativecommons.org/licenses/by/3.0/]
