@@ -1,5 +1,7 @@
 /*
     Squinty
+    Author: Steve Urmston
+    http://urm.st/
 */
 
 var sq_presets = {

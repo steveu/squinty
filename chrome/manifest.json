@@ -5,7 +5,7 @@
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-      "js": ["squinty.js"]
+      "js": ["js/squinty.js"]
     }
   ],
 
